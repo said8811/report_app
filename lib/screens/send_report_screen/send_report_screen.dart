@@ -59,8 +59,8 @@ class SendReportScreen extends StatelessWidget {
           ),
           SizedBox(height: 16.h),
           Consumer<ReportViewModel>(
-            builder: (context, value, child) {
-              if (value.states == ReportStates.Pure) {
+            builder: (context, viewModel, child) {
+              if (viewModel.states == ReportStates.Pure) {
                 return GlobalContainer(
                   text: "Отправить жалобу",
                   ontap: () {
@@ -70,14 +70,14 @@ class SendReportScreen extends StatelessWidget {
                   },
                 );
               }
-              if (value.states == ReportStates.Loading) {
+              if (viewModel.states == ReportStates.Loading) {
                 return const LoadingButton();
               }
-              if (value.states == ReportStates.Error) {
+              if (viewModel.states == ReportStates.Error) {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(
-                    title: Text(value.error),
+                    title: Text(viewModel.error),
                     actions: [
                       TextButton(
                           onPressed: () => Navigator.pop(context),
