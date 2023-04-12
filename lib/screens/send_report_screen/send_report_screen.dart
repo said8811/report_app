@@ -73,6 +73,14 @@ class SendReportScreen extends StatelessWidget {
               if (value.states == ReportStates.Loading) {
                 return const LoadingButton();
               }
+              if (value.states == ReportStates.Error) {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text(value.error),
+                  ),
+                );
+              }
               return const SizedBox();
             },
           )
