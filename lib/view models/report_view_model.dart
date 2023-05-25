@@ -7,31 +7,30 @@ import 'package:report_app/data/repository/report_repository.dart';
 class ReportViewModel extends ChangeNotifier {
   String error = '';
   String categoryName = "";
-  ReportPages page = ReportPages.Choose_category;
-  ReportStates states = ReportStates.Pure;
+  ReportPages page = ReportPages.chooseCategory;
+  ReportStates states = ReportStates.pure;
   ReportRepository repository;
   ReportViewModel({required this.repository});
   sendReport(Map<String, dynamic> reportModel) async {
-    states = ReportStates.Loading;
+    states = ReportStates.loading;
     notifyListeners();
     MyResponse response = await repository.sendReport(reportModel);
     notifyListeners();
     if (response.error.isEmpty) {
-      states = ReportStates.Succes;
-      page = ReportPages.Report_In_Succes;
+      states = ReportStates.succes;
+      page = ReportPages.reportInSucces;
       notifyListeners();
     } else {
       error = response.error;
-      print(response.error);
-      states = ReportStates.Error;
+      states = ReportStates.error;
       notifyListeners();
     }
     notifyListeners();
   }
 
   closeAll() {
-    states = ReportStates.Pure;
-    page = ReportPages.Choose_category;
+    states = ReportStates.pure;
+    page = ReportPages.chooseCategory;
     notifyListeners();
   }
 

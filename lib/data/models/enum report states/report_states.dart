@@ -1,6 +1,1 @@
-enum ReportStates  {
-  Pure,
-  Loading,
-  Error,
-  Succes
-}
+enum ReportStates { pure, loading, error, succes }

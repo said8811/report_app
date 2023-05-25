@@ -4,9 +4,9 @@ import 'package:report_app/utils/colors.dart';
 import 'package:report_app/utils/text_style.dart';
 
 class GlobalContainer extends StatelessWidget {
-  String text;
-  VoidCallback ontap;
-  GlobalContainer({Key? key, required this.text, required this.ontap})
+  final String text;
+  final VoidCallback ontap;
+  const GlobalContainer({Key? key, required this.text, required this.ontap})
       : super(key: key);
 
   @override
@@ -16,7 +16,7 @@ class GlobalContainer extends StatelessWidget {
       child: Container(
         height: 52.h,
         decoration: BoxDecoration(
-            color: MyColors.ContainerColor,
+            color: MyColors.containerColor,
             borderRadius: BorderRadius.circular(4.r)),
         child: Center(
             child: Text(

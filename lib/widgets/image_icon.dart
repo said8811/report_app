@@ -12,8 +12,10 @@ class ImageIconWidget extends StatelessWidget {
     return Container(
       width: 64.w,
       height: 64.h,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(50),color: MyColors.C_E6E8EB),
-      child: Center(child: Text("К",style: fontNunitoW600(fontSize: 32.sp)),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(50), color: MyColors.c_E6E8EB),
+      child: Center(
+        child: Text("К", style: fontNunitoW600(fontSize: 32.sp)),
       ),
     );
   }

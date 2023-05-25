@@ -18,15 +18,15 @@ class ReportScreen extends StatelessWidget {
           width: double.infinity,
           child: Consumer<ReportViewModel>(
             builder: (context, reportViewModel, child) {
-              if (reportViewModel.page == ReportPages.Choose_category) {
-                return ChooseReportScreen();
+              if (reportViewModel.page == ReportPages.chooseCategory) {
+                return const ChooseReportScreen();
               }
-              if (reportViewModel.page == ReportPages.Send_report) {
+              if (reportViewModel.page == ReportPages.sendReport) {
                 return SendReportScreen(
                   category: reportViewModel.categoryName,
                 );
               }
-              if (reportViewModel.page == ReportPages.Report_In_Succes) {
+              if (reportViewModel.page == ReportPages.reportInSucces) {
                 return const ReportSuccesScreen();
               }
               return const SizedBox();

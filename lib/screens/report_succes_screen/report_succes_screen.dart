@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,7 +25,7 @@ class ReportSuccesScreen extends StatelessWidget {
           style: fontNunitoW600(fontSize: 20.sp),
         )),
         SizedBox(height: 16.h),
-        Divider(color: MyColors.C_E6E8EB, thickness: 1),
+        Divider(color: MyColors.c_E6E8EB, thickness: 1),
         SizedBox(height: 160.h),
         SvgPicture.asset("assets/svg/succes_icon.svg"),
         SizedBox(height: 20.h),

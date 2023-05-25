@@ -13,10 +13,17 @@ import 'package:report_app/widgets/image_icon.dart';
 
 import '../../utils/text_style.dart';
 
-class SendReportScreen extends StatelessWidget {
-  String category;
-  SendReportScreen({Key? key, required this.category}) : super(key: key);
+class SendReportScreen extends StatefulWidget {
+  final String category;
+  const SendReportScreen({Key? key, required this.category}) : super(key: key);
+
+  @override
+  State<SendReportScreen> createState() => _SendReportScreenState();
+}
+
+class _SendReportScreenState extends State<SendReportScreen> {
   TextEditingController controller = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -33,10 +40,10 @@ class SendReportScreen extends StatelessWidget {
             style: fontNunitoW600(fontSize: 20.sp),
           )),
           SizedBox(height: 16.h),
-          Divider(color: MyColors.C_E6E8EB, thickness: 1),
+          Divider(color: MyColors.c_E6E8EB, thickness: 1),
           SizedBox(height: 24.h),
           Text(
-            category,
+            widget.category,
             style: fontNunitoW600(fontSize: 16.sp),
           ),
           SizedBox(height: 12.h),
@@ -51,7 +58,7 @@ class SendReportScreen extends StatelessWidget {
             "Комментарий (необязательно)",
             style: fontNunitoW400(
               fontSize: 12.sp,
-            ).copyWith(color: MyColors.C_808C9A),
+            ).copyWith(color: MyColors.c_808C9A),
           ),
           SizedBox(height: 8.h),
           ReportTextField(
@@ -60,20 +67,22 @@ class SendReportScreen extends StatelessWidget {
           SizedBox(height: 16.h),
           Consumer<ReportViewModel>(
             builder: (context, viewModel, child) {
-              if (viewModel.states == ReportStates.Pure) {
+              if (viewModel.states == ReportStates.pure) {
                 return GlobalContainer(
                   text: "Отправить жалобу",
                   ontap: () {
                     ReportModel model = ReportModel(
-                        userId: 1, category: category, text: controller.text);
+                        userId: 1,
+                        category: widget.category,
+                        text: controller.text);
                     context.read<ReportViewModel>().sendReport(model.toJson());
                   },
                 );
               }
-              if (viewModel.states == ReportStates.Loading) {
+              if (viewModel.states == ReportStates.loading) {
                 return const LoadingButton();
               }
-              if (viewModel.states == ReportStates.Error) {
+              if (viewModel.states == ReportStates.error) {
                 showDialog(
                   context: context,
                   builder: (context) => AlertDialog(

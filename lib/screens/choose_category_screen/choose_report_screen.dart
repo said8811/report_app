@@ -8,8 +8,11 @@ import 'package:report_app/widgets/image_icon.dart';
 
 import '../../data/models/enum report pages/report_pages.dart';
 import '../../utils/constants.dart';
+
 class ChooseReportScreen extends StatelessWidget {
-   ChooseReportScreen({Key? key,}) : super(key: key);
+  const ChooseReportScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,27 +20,41 @@ class ChooseReportScreen extends StatelessWidget {
       children: [
         const ImageIconWidget(),
         SizedBox(height: 10.h),
-        Text("Константин Володарский",style: fontNunitoW600(fontSize: 20.sp),),
+        Text(
+          "Константин Володарский",
+          style: fontNunitoW600(fontSize: 20.sp),
+        ),
         SizedBox(height: 16.h),
         Divider(
-          color: MyColors.C_E6E8EB,
+          color: MyColors.c_E6E8EB,
           thickness: 1,
         ),
         SizedBox(height: 24.h),
-        Text("Что на странице Контантина кажется вам недопустимым?",style: fontNunitoW600(fontSize: 16.sp),),
+        Text(
+          "Что на странице Контантина кажется вам недопустимым?",
+          style: fontNunitoW600(fontSize: 16.sp),
+        ),
         SizedBox(height: 12.h),
         ListView.separated(
-          separatorBuilder: (context, index) => SizedBox(height: 14.h,),
+          separatorBuilder: (context, index) => SizedBox(
+            height: 14.h,
+          ),
           padding: EdgeInsets.zero,
           shrinkWrap: true,
           itemCount: reports.length,
           itemBuilder: (context, index) {
             return GestureDetector(
                 onTap: () {
-                  context.read<ReportViewModel>().changeState(ReportPages.Send_report,reports[index]);
+                  context
+                      .read<ReportViewModel>()
+                      .changeState(ReportPages.sendReport, reports[index]);
                 },
-                child: Text(reports[index],style: fontNunitoW400(fontSize: 14.sp),));
-          },)
+                child: Text(
+                  reports[index],
+                  style: fontNunitoW400(fontSize: 14.sp),
+                ));
+          },
+        )
       ],
     );
   }
